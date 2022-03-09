@@ -1,8 +1,12 @@
 package dto
 
 import (
+	// _ "database/sql"
+
 	"github.com/bhavanareddy72/student/errs"
 	"github.com/bhavanareddy72/student/logger"
+
+	_ "github.com/go-sql-driver/mysql"
 	"github.com/jmoiron/sqlx"
 )
 

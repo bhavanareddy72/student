@@ -22,7 +22,7 @@ func sanityCheck() {
 }
 
 func Start() {
-	sanityCheck()
+	// sanityCheck()
 	router := mux.NewRouter()
 
 	dbclient := getDbclient()
@@ -33,17 +33,17 @@ func Start() {
 	// router.HandleFunc("/students", ch).Methods(http.MethodGet)
 	// router.HandleFunc("/students/{student_id:[0-9]+}", ch.getstudent).Methods(http.MethodGet)
 	router.HandleFunc("/students/{student_id:[0-9]+}/student", ah.Newstudent).Methods(http.MethodPost)
-	address := os.Getenv("SERVER_ADDRESS")
-	port := os.Getenv("SERVER_PORT")
+	address := "localhost"
+	port := 8080
 
 	log.Fatal(http.ListenAndServe(fmt.Sprintf("%s:%s", address, port), router))
 }
 func getDbclient() *sqlx.DB {
-	dbUser := os.Getenv("DB_USER")
-	dbpasswd := os.Getenv("DB_PASSWD")
-	dbAddr := os.Getenv("DB_ADDR")
-	dbport := os.Getenv("DB_PORT")
-	dbName := os.Getenv("DB_NAME")
+	dbUser := "root"         //os.Getenv("DB_USER")
+	dbpasswd := "helloworld" //os.Getenv("DB_PASSWD")
+	dbAddr := "localhost"    //os.Getenv("DB_ADDR")
+	dbport := "3306"         //os.Getenv("DB_PORT")
+	dbName := "student"      //os.Getenv("DB_NAME")
 
 	dataSource := fmt.Sprintf("%s:%s@tcp(%s:%s)/%s", dbUser, dbpasswd, dbAddr, dbport, dbName)
 	client, err := sqlx.Open("mysql", dataSource)
