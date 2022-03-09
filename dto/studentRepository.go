@@ -15,7 +15,7 @@ type studentsRepositoryDb struct {
 }
 
 func (d studentsRepositoryDb) Save(s Student) (*Student, *errs.AppError) {
-	sqlInsert := "INSERT INTO students(student_id, studentlastName,studentFirstName,studentphone,studentcity) values(?,?,?,?)"
+	sqlInsert := "INSERT INTO students(student_id, student_last_name,student_first_name,student_phone,student_city) values(?,?,?,?,?)"
 	result, err := d.client.Exec(sqlInsert, s.StudentId, s.StudentlastName, s.StudentfirstName, s.Studentphone, s.Studentcity)
 	if err != nil {
 		logger.Error("Error while creating new account:" + err.Error())

@@ -33,10 +33,8 @@ func Start() {
 	// router.HandleFunc("/students", ch).Methods(http.MethodGet)
 	// router.HandleFunc("/students/{student_id:[0-9]+}", ch.getstudent).Methods(http.MethodGet)
 	router.HandleFunc("/students/{student_id:[0-9]+}/student", ah.Newstudent).Methods(http.MethodPost)
-	address := "localhost"
-	port := 8080
 
-	log.Fatal(http.ListenAndServe(fmt.Sprintf("%s:%s", address, port), router))
+	log.Fatal(http.ListenAndServe("localhost:8000", router))
 }
 func getDbclient() *sqlx.DB {
 	dbUser := "root"         //os.Getenv("DB_USER")

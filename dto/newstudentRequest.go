@@ -18,9 +18,9 @@ type NewStudentRequest struct {
 }
 
 func (s NewStudentRequest) Validate() *errs.AppError {
-	if s.StudentId != 25 {
-		return errs.NewValidationError("To open a new Id we need new Id")
-	}
+	// if s.StudentId != 25 {
+	// 	return errs.NewValidationError("To open a new Id we need new Id")
+	// }
 	return nil
 
 }
